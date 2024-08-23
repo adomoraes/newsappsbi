@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Newsletter App SBI - Agosto/2024</title>
+		<style>
+			body,
+			table,
+			td,
+			p {
+				font-family: Arial, sans-serif;
+				line-height: 1.5;
+				color: #081f87;
+			}
+
+			td {
+				padding-left: 20px;
+				padding-right: 20px;
+				vertical-align: top;
+			}
+
+			table {
+				max-width: 700px;
+				width: 100%;
+				border-collapse: collapse;
+				margin: 0 auto;
+				word-break: break-word;
+			}
+
+			img {
+				max-width: 100%;
+				height: auto;
+				display: block;
+				border: 0;
+				margin-bottom: 20px;
+			}
+
+			.container {
+				width: 100%;
+			}
+
+			.header {
+				background-color: #e5ecfc !important;
+				text-align: center;
+				padding: 20px 0;
+			}
+
+			.header td.column {
+				padding: 0;
+				vertical-align: middle;
+			}
+
+			.header td.column img {
+				border-top-right-radius: 100px;
+				border-bottom-right-radius: 100px;
+				padding: 30px 70px 30px 30px;
+				background-color: #fff;
+				display: block;
+				margin: 0 auto;
+				margin-left: 0;
+			}
+
+			.header td.navbar p {
+				border-top-left-radius: 100px;
+				border-bottom-left-radius: 100px;
+				padding: 10px;
+				font-size: small;
+				background-color: #081f87;
+				color: #ffffff;
+				vertical-align: top;
+			}
+
+			.footer {
+				background-color: #081f87;
+				padding: 20px 0;
+				margin-top: 20px;
+				border-radius: 100px;
+			}
+
+			.footer p {
+				color: #fff;
+				line-height: 0.5;
+				font-size: small;
+				text-align: center;
+			}
+
+			.footer p a {
+				color: #fff;
+			}
+
+			.content {
+				padding: 20px 0;
+				background-color: #d1d8ee;
+			}
+
+			.single-column {
+				width: 100%;
+				padding: 20px;
+				background-color: #e5ecfc;
+				text-align: left;
+			}
+
+			.two-columns {
+				width: 100%;
+				display: table;
+				padding: 0 20px;
+				background-color: #dae1f4;
+			}
+
+			.column {
+				width: 50%;
+				display: table-cell;
+				padding: 0 20px;
+				box-sizing: border-box;
+				vertical-align: top;
+			}
+
+			.list-item {
+				display: flex;
+				align-items: center;
+				padding: 10px;
+				vertical-align: top;
+			}
+
+			.list-item img {
+				margin-right: 15px;
+				width: 100px;
+				height: 100px;
+			}
+
+			.list-item p {
+				margin: 0;
+				color: #081f87;
+			}
+
+			.pill {
+				color: #fff;
+				font-weight: bold;
+				background-color: #081f87;
+				border-radius: 50px;
+				padding: 5px 20px;
+				font-size: smaller;
+				text-decoration: none;
+				margin: 20px 0;
+				width: 150px;
+				display: block;
+				text-align: center;
+			}
+
+			.center {
+				text-align: center;
+			}
+
+			h2 {
+				margin: 0;
+			}
+
+			a {
+				font-weight: bold;
+				color: #081f87;
+			}
+
+			@media screen and (max-width: 600px) {
+				.two-columns .column {
+					display: block;
+					width: 100%;
+				}
+				.header {
+					text-align: center;
+				}
+				.header td.column img {
+					border-top-right-radius: 100px;
+					border-bottom-right-radius: 100px;
+					border-top-left-radius: 100px;
+					border-bottom-left-radius: 100px;
+					padding: 30px 50px;
+					margin: auto;
+					margin-top: 20px;
+				}
+				.column img {
+					margin: 0 auto 20px auto;
+				}
+				.header td.navbar p {
+					border-top-left-radius: 100px;
+					border-bottom-left-radius: 100px;
+					border-top-right-radius: 100px;
+					border-bottom-right-radius: 100px;
+					padding: 10px;
+					font-size: small;
+					background-color: #081f87;
+					color: #ffffff;
+					width: 90%;
+					margin: 20px auto;
+				}
+				.list-item {
+					display: grid;
+				}
+				.footer {
+					border-radius: 50px;
+				}
+				.footer p {
+					line-height: 1.5;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<table role="presentation">
+			<tr>
+				<td class="container">
+					<table class="header two-columns" role="presentation">
+						<tr>
+							<td class="column">
+								<img
+									src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/logo.png"
+									alt="Logo SBI" />
+							</td>
+							<td class="column navbar">
+								<p>
+									<strong>Newsletter - Edição 1 - 25 de Junho de 2024</strong>
+								</p>
+							</td>
+						</tr>
+					</table>
+
+					<table class="single-column" role="presentation">
+						<tr>
+							<td>
+								<a class="pill" href="#" title="">Editorial</a>
+								<h2>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit donec
+									gravida tellus.
+								</h2>
+								<p>
+									Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+									neque. Morbi ac ante vitae quam euismod iaculis vel eget erat.
+									Ut et odio quis magna porttitor egestas. Aenean feugiat
+									gravida mauris in tincidunt. Aliquam tempus id urna vitae
+									suscipit. Duis laoreet tellus eu velit ultrices varius.
+									<a href="#" title="">Leia mais</a>
+								</p>
+								<img
+									src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1633320190.png"
+									alt="" />
+							</td>
+						</tr>
+					</table>
+
+					<table class="two-columns" role="presentation">
+						<tr>
+							<td colspan="2">
+								<a class="pill" href="#" title="">Especial do Mês</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="column">
+								<img
+									src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1486146700.png"
+									alt="" />
+							</td>
+							<td class="column">
+								<h2>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit donec
+									gravida tellus.
+								</h2>
+								<p>
+									Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+									neque. Morbi ac ante vitae quam euismod iaculis vel eget erat.
+									Ut et odio quis magna porttitor egestas. Aenean feugiat
+									gravida mauris in tincidunt. Aliquam tempus id urna vitae
+									suscipit. Duis laoreet tellus eu velit ultrices varius.
+									<a href="#" title="">Leia mais</a>
+								</p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<a class="pill" href="#" title="">Notícias de Infectologia</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="column">
+								<img
+									src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1203775802.png"
+									alt="" />
+								<h2>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit donec
+									gravida tellus.
+								</h2>
+								<p>
+									Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+									neque. Morbi ac ante vitae quam euismod iaculis vel eget erat.
+									Ut et odio quis magna porttitor egestas. Aenean feugiat
+									gravida mauris in tincidunt. Aliquam tempus id urna vitae
+									suscipit. Duis laoreet tellus eu velit ultrices varius.
+									<a href="#" title="">Leia mais</a>
+								</p>
+							</td>
+							<td class="column">
+								<img
+									src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1493870734.png"
+									alt="" />
+								<h2>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit donec
+									gravida tellus.
+								</h2>
+								<p>
+									Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+									neque. Morbi ac ante vitae quam euismod iaculis vel eget erat.
+									Ut et odio quis magna porttitor egestas. Aenean feugiat
+									gravida mauris in tincidunt. Aliquam tempus id urna vitae
+									suscipit. Duis laoreet tellus eu velit ultrices varius.
+									<a href="#" title="">Leia mais</a>
+								</p>
+							</td>
+						</tr>
+					</table>
+
+					<table class="content" role="presentation">
+						<tr>
+							<td>
+								<a class="pill" href="#" title="">Próximos Eventos</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="list-item">
+									<img
+										src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-974238866.png"
+										alt="" />
+									<p>
+										<strong>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit
+											donec gravida tellus.
+										</strong>
+										Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+										neque. Morbi ac ante vitae quam euismod iaculis vel eget
+										erat. Ut et odio quis magna porttitor egestas. Aenean
+										feugiat gravida mauris in tincidunt.
+										<a href="#" title="">Leia mais</a>
+									</p>
+								</div>
+								<div class="list-item">
+									<img
+										src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1496377580.png"
+										alt="" />
+									<p>
+										<strong>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit
+											donec gravida tellus.
+										</strong>
+										Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+										neque. Morbi ac ante vitae quam euismod iaculis vel eget
+										erat. Ut et odio quis magna porttitor egestas. Aenean
+										feugiat gravida mauris in tincidunt.
+										<a href="#" title="">Leia mais</a>
+									</p>
+								</div>
+								<div class="list-item">
+									<img
+										src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1496375534.png"
+										alt="" />
+									<p>
+										<strong>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit
+											donec gravida tellus.
+										</strong>
+										Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+										neque. Morbi ac ante vitae quam euismod iaculis vel eget
+										erat. Ut et odio quis magna porttitor egestas. Aenean
+										feugiat gravida mauris in tincidunt.
+										<a href="#" title="">Leia mais</a>
+									</p>
+								</div>
+							</td>
+						</tr>
+					</table>
+
+					<table class="single-column" role="presentation">
+						<tr>
+							<td>
+								<a class="pill" href="#" title="">Pergunta Clínica</a>
+								<h2>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit donec
+									gravida tellus.
+								</h2>
+								<p>
+									Aenean ipsum mi, luctus commodo elit eu, facilisis interdum
+									neque. Morbi ac ante vitae quam euismod iaculis vel eget erat.
+									Ut et odio quis magna porttitor egestas. Aenean feugiat
+									gravida mauris in tincidunt. Aliquam tempus id urna vitae
+									suscipit. Duis laoreet tellus eu velit ultrices varius.
+									<a href="#" title="">Leia mais</a>
+								</p>
+								<img
+									src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1356114754.png"
+									alt="" />
+							</td>
+						</tr>
+					</table>
+
+					<table class="single-column center" role="presentation">
+						<tr>
+							<td>
+								<h2>Nossas redes sociais</h2>
+								<a
+									href="https://www.instagram.com/sbinfecto/"
+									title="Siga-nos no Instagram"
+									style="display: inline-block; margin: 0 10px">
+									<img
+										src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/instagram.png"
+										alt="Perfil SBI Instagram" />
+								</a>
+								<a
+									href="https://www.youtube.com/channel/UC_wYNM7oYzT68pPwRPob9fA"
+									title="Inscreva-se no canal"
+									style="display: inline-block; margin: 0 10px">
+									<img
+										src="http://wreck.tecnologia.ws/tino/sbi/template/assets/images/youtube.png"
+										alt="Canal SBI Youtube" />
+								</a>
+							</td>
+						</tr>
+					</table>
+
+					<table class="footer" role="presentation">
+						<tr>
+							<td>
+								<p><strong>Sociedade Brasileira de Infectologia</strong></p>
+								<p>
+									Rua Teixeira da Silva, 660 - Cj. 42 - Paraíso - São Paulo/SP -
+									CEP: 04002-033
+								</p>
+								<p>(11) 5575-5647</p>
+								<p>(11) 97066-9856</p>
+								<p>
+									<a href="mailto:sbi@infectologia.org.br" title=""
+										>sbi@infectologia.org.br</a
+									>
+								</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

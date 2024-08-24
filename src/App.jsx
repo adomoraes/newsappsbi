@@ -1,8 +1,18 @@
-function App() {
+// src/App.jsx
+
+import React from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import HomePage from "./pages/HomePage"
+import CategoryPage from "./pages/CategoryPage"
+
+const App = () => {
 	return (
-		<>
-			<h1 class='text-3xl font-bold underline'>NewsApp SBI</h1>
-		</>
+		<Router>
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+				<Route path='/category/:name' element={<CategoryPage />} />
+			</Routes>
+		</Router>
 	)
 }
 

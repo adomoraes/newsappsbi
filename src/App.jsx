@@ -7,7 +7,7 @@ import CategoryPage from "./pages/CategoryPage"
 
 const App = () => {
 	return (
-		<Router>
+		<Router basename='/newsappsbi/'>
 			<Routes>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/category/:name' element={<CategoryPage />} />

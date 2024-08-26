@@ -1,7 +1,7 @@
 // src/pages/CategoryPage.jsx
 
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import FetchData from "../components/FetchData"
 
 const categoryMapping = {
@@ -23,6 +23,11 @@ const CategoryPage = () => {
 		<div className='p-4'>
 			<h1 className='text-2xl font-bold mb-4'>{name.replace("-", " ")}</h1>
 			<FetchData category={categoryId} />
+			<div className='mt-6'>
+				<Link to='/category/saiu-na-imprensa' className='text-blue-500'>
+					Ver mais artigos de saiu-na-imprensa
+				</Link>
+			</div>
 		</div>
 	)
 }

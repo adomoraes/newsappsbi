@@ -14,6 +14,9 @@ const HomePage = () => {
 					Ver mais artigos de saiu-na-imprensa
 				</Link>
 			</div>
+			<button id='installButton' style='display: none;'>
+				Instalar App
+			</button>
 		</div>
 	)
 }

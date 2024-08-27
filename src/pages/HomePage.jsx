@@ -14,14 +14,14 @@ const HomePage = () => {
 			<EditorialSection
 				title='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.'
 				category='Editorial'
-				imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1633320190.png'
+				imageUrl='./assets/images/iStock-1633320190.png'
 				content='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus. Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.'
 				linkText='Leia mais'
 				linkUrl='#'
 			/>
 			<ContentSection
 				title='Especial do Mês'
-				imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1486146700.png'
+				imageUrl='./assets/images/iStock-1486146700.png'
 				content='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus. Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.'
 				linkText='Leia mais'
 				linkUrl='#'
@@ -29,8 +29,7 @@ const HomePage = () => {
 					{
 						title:
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
-						imageUrl:
-							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1203775802.png",
+						imageUrl: "./assets/images/iStock-1203775802.png",
 						content:
 							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.",
 						linkText: "Leia mais",
@@ -39,8 +38,7 @@ const HomePage = () => {
 					{
 						title:
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
-						imageUrl:
-							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1493870734.png",
+						imageUrl: "./assets/images/iStock-1493870734.png",
 						content:
 							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.",
 						linkText: "Leia mais",
@@ -54,8 +52,7 @@ const HomePage = () => {
 					{
 						title:
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
-						imageUrl:
-							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-974238866.png",
+						imageUrl: "./assets/images/iStock-974238866.png",
 						content:
 							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt.",
 						linkUrl: "#",
@@ -63,8 +60,7 @@ const HomePage = () => {
 					{
 						title:
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
-						imageUrl:
-							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1496377580.png",
+						imageUrl: "./assets/images/iStock-1496377580.png",
 						content:
 							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt.",
 						linkUrl: "#",
@@ -72,8 +68,7 @@ const HomePage = () => {
 					{
 						title:
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
-						imageUrl:
-							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1496375534.png",
+						imageUrl: "./assets/images/iStock-1496375534.png",
 						content:
 							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt.",
 						linkUrl: "#",
@@ -83,7 +78,7 @@ const HomePage = () => {
 			<EditorialSection
 				title='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.'
 				category='Pergunta Clínica'
-				imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1356114754.png'
+				imageUrl='./assets/images/iStock-1356114754.png'
 				content='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus. Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.'
 				linkText='Leia mais'
 				linkUrl='#'

@@ -5,14 +5,13 @@ const Header = () => {
 		<header
 			className='bg-no-repeat bg-right-top bg-auto bg-blue-100 text-center py-5'
 			style={{
-				backgroundImage:
-					"url('http://wreck.tecnologia.ws/tino/sbi/template/assets/images/globo.png')",
+				backgroundImage: "url('./assets/images/globo.png')",
 			}}>
 			<div className='flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto'>
 				<div className='p-0 pr-5'>
 					<img
 						className='rounded-full md:rounded-tr-full md:rounded-br-full sm:rounded-tl-none sm:rounded-bl-none p-5 bg-white mx-auto sm:ml-0'
-						src='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/logo.png'
+						src='./assets/images/logo.png'
 						alt='Logo SBI'
 					/>
 				</div>

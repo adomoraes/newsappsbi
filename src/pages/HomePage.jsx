@@ -1,40 +1,96 @@
 import React, { useState, useEffect } from "react"
-import FetchData from "../components/FetchData"
+import Header from "./Header"
+import EditorialSection from "./EditorialSection"
+import ContentSection from "./ContentSection"
+import ListSection from "./ListSection"
+import SocialSection from "./SocialSection"
+import Footer from "./Footer"
 import "../utils/deferredPrompt"
 
 const HomePage = () => {
-	// Estado para rastrear se o PWA está instalado
-	const [isAppInstalled, setIsAppInstalled] = useState(false)
-
-	useEffect(() => {
-		// Ouve pelo evento `appinstalled`
-		window.addEventListener("appinstalled", () => {
-			setIsAppInstalled(true)
-		})
-
-		// Checa se o aplicativo já está instalado usando a API Window.navigator.standalone
-		if (
-			window.matchMedia("(display-mode: standalone)").matches ||
-			window.navigator.standalone
-		) {
-			setIsAppInstalled(true)
-		}
-	}, [])
-
 	return (
-		<div className='p-4'>
-			<h1 className='text-2xl font-bold mb-4'>Bem-vindo ao NewsAppSBI</h1>
-			<button
-				id='installButton'
-				className='bg-blue-500 text-white py-2 px-4 rounded mt-4'
-				style={{ display: "none" }}
-				aria-label='Instalar o aplicativo'>
-				Instalar App
-			</button>
-
-			{/* Renderiza FetchData apenas se o aplicativo estiver instalado */}
-			{isAppInstalled && <FetchData category='48' />}
-		</div>
+		<>
+			<Header />
+			<EditorialSection
+				title='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.'
+				category='Editorial'
+				imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1633320190.png'
+				content='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus. Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.'
+				linkText='Leia mais'
+				linkUrl='#'
+			/>
+			<ContentSection
+				title='Especial do Mês'
+				imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1486146700.png'
+				content='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus. Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.'
+				linkText='Leia mais'
+				linkUrl='#'
+				secondaryItems={[
+					{
+						title:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
+						imageUrl:
+							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1203775802.png",
+						content:
+							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.",
+						linkText: "Leia mais",
+						linkUrl: "#",
+					},
+					{
+						title:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
+						imageUrl:
+							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1493870734.png",
+						content:
+							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.",
+						linkText: "Leia mais",
+						linkUrl: "#",
+					},
+				]}
+			/>
+			<ListSection
+				title='Próximos Eventos'
+				items={[
+					{
+						title:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
+						imageUrl:
+							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-974238866.png",
+						content:
+							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt.",
+						linkUrl: "#",
+					},
+					{
+						title:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
+						imageUrl:
+							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1496377580.png",
+						content:
+							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt.",
+						linkUrl: "#",
+					},
+					{
+						title:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.",
+						imageUrl:
+							"http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1496375534.png",
+						content:
+							"Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt.",
+						linkUrl: "#",
+					},
+				]}
+			/>
+			<EditorialSection
+				title='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus.'
+				category='Pergunta Clínica'
+				imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/iStock-1356114754.png'
+				content='Lorem ipsum dolor sit amet, consectetur adipiscing elit donec gravida tellus. Aenean ipsum mi, luctus commodo elit eu, facilisis interdum neque. Morbi ac ante vitae quam euismod iaculis vel eget erat. Ut et odio quis magna porttitor egestas. Aenean feugiat gravida mauris in tincidunt. Aliquam tempus id urna vitae suscipit. Duis laoreet tellus eu velit ultrices varius.'
+				linkText='Leia mais'
+				linkUrl='#'
+			/>
+			<SocialSection />
+			<Footer />
+		</>
 	)
 }
 

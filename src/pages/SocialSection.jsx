@@ -12,13 +12,13 @@ const SocialSection = () => {
 				<SocialLink
 					href='https://www.instagram.com/sbinfecto/'
 					title='Siga-nos no Instagram'
-					imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/instagram.png'
+					imageUrl='./assets/images/instagram.png'
 					altText='Perfil SBI Instagram'
 				/>
 				<SocialLink
 					href='https://www.youtube.com/channel/UC_wYNM7oYzT68pPwRPob9fA'
 					title='Inscreva-se no canal'
-					imageUrl='http://wreck.tecnologia.ws/tino/sbi/template/assets/images/youtube.png'
+					imageUrl='./assets/images/youtube.png'
 					altText='Canal SBI Youtube'
 				/>
 			</div>

@@ -3,64 +3,84 @@ import HomePage from "./HomePage"
 // import FetchData from './FetchData'; // Descomente quando o componente FetchData estiver implementado
 
 const Welcome = () => {
-	const [installPromptEvent, setInstallPromptEvent] = useState(null)
-	const [isAppInstalled, setIsAppInstalled] = useState(false)
+	const [deferredPrompt, setDeferredPrompt] = useState(null)
+	const [isInstalled, setIsInstalled] = useState(false)
 
 	useEffect(() => {
-		const handleBeforeInstallPrompt = (e) => {
+		// Verificar se a PWA está instalada
+		window.addEventListener("appinstalled", () => {
+			setIsInstalled(true)
+		})
+
+		// Captura o evento antes da instalação
+		window.addEventListener("beforeinstallprompt", (e) => {
 			e.preventDefault()
-			setInstallPromptEvent(e)
-		}
-
-		window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt)
-
-		// Check if the app is installed
-		const checkAppInstalled = () => {
-			if (window.matchMedia("(display-mode: standalone)").matches) {
-				setIsAppInstalled(true)
-			}
-		}
-
-		checkAppInstalled()
+			setDeferredPrompt(e)
+		})
 
 		return () => {
-			window.removeEventListener(
-				"beforeinstallprompt",
-				handleBeforeInstallPrompt
+			window.removeEventListener("appinstalled", () => setIsInstalled(false))
+			window.removeEventListener("beforeinstallprompt", () =>
+				setDeferredPrompt(null)
 			)
 		}
 	}, [])
 
 	const handleInstallClick = () => {
-		if (installPromptEvent) {
-			installPromptEvent.prompt()
-			installPromptEvent.userChoice.then((choiceResult) => {
+		if (deferredPrompt) {
+			deferredPrompt.prompt()
+			deferredPrompt.userChoice.then((choiceResult) => {
 				if (choiceResult.outcome === "accepted") {
-					console.log("User accepted the install prompt")
-				} else {
-					console.log("User dismissed the install prompt")
+					console.log("Usuário aceitou a instalação da PWA")
 				}
-				setInstallPromptEvent(null)
+				setDeferredPrompt(null)
 			})
 		}
 	}
 
-	return (
-		<div className='p-4'>
-			<h1 className='text-2xl font-bold mb-4'>Bem-vindo ao NewsAppSBI</h1>
-			{!isAppInstalled && installPromptEvent && (
-				<button
-					id='installButton'
-					className='bg-blue-500 text-white py-2 px-4 rounded mt-4'
-					onClick={handleInstallClick}
-					aria-label='Instalar o aplicativo'>
-					Instalar App
-				</button>
-			)}
+	const isIos = () => {
+		const userAgent = window.navigator.userAgent.toLowerCase()
+		return /iphone|ipad|ipod/.test(userAgent)
+	}
 
-			{/* Renderiza FetchData apenas se o aplicativo estiver instalado */}
-			{isAppInstalled && <HomePage />}
-		</div>
+	const isInStandaloneMode = () =>
+		"standalone" in window.navigator && window.navigator.standalone
+
+	return (
+		<>
+			{isInstalled && isInStandaloneMode && <HomePage />}
+			{!isInstalled && deferredPrompt && (
+				<div className='flex flex-col items-center justify-center h-screen bg-[#081F87] text-white text-center p-6'>
+					<img
+						className='rounded-full p-7 mb-7 bg-white mx-auto'
+						src='./assets/images/logo.png'
+						alt='Logo SBI'
+					/>
+					<h1 className='text-4xl font-bold'>Bem-vindo ao NewsAPP SBI</h1>
+					<h2 className='text-2xl mt-4'>
+						O essencial da infectologia na suas mãos
+					</h2>
+					<p className='mt-2'>
+						Fique atualizado com as últimas notícias, eventos e informações
+						importantes sobre infectologia diretamente da Sociedade Brasileira
+						de Infectologia.
+					</p>
+					{isIos() &&
+						!isInStandaloneMode()(
+							<p className='mt-2 text-center'>
+								Para instalar o aplicativo, clique no ícone de compartilhar no
+								navegador e selecione "Adicionar à Tela de Início".
+							</p>
+						)}
+
+					<button
+						className='mt-6 px-4 py-2 bg-[#00BCE4] text-[#0C033D] rounded hover:bg-[#0C033D] hover:text-[#00BCE4] transition duration-300'
+						onClick={handleInstallClick}>
+						Clique aqui para instalar!
+					</button>
+				</div>
+			)}
+		</>
 	)
 }
 

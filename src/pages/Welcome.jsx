@@ -110,7 +110,9 @@ const Welcome = () => {
 				)}
 
 				<button
-					className='mt-6 px-4 py-2 bg-[#00BCE4] text-[#0C033D] rounded hover:bg-[#0C033D] hover:text-[#00BCE4] transition duration-300'
+					className={`mt-6 px-4 py-2 bg-[#00BCE4] text-[#0C033D] rounded hover:bg-[#0C033D] hover:text-[#00BCE4] transition duration-300 ${
+						isIos() ? "hidden" : ""
+					}`}
 					onClick={handleButtonClick}>
 					{isInstalled
 						? "Clique aqui para abrir o aplicativo!"

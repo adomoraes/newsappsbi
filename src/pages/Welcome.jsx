@@ -9,23 +9,32 @@ const Welcome = () => {
 	useEffect(() => {
 		// Verificar se a PWA está instalada
 		const handleAppInstalled = () => {
+			console.log("PWA foi instalado!")
 			setIsInstalled(true)
+			setDeferredPrompt(null) // Remover o prompt após a instalação
 		}
 
+		// Adicionando o evento de 'appinstalled' para detectar a instalação
 		window.addEventListener("appinstalled", handleAppInstalled)
 
-		// Captura o evento antes da instalação
+		// Captura o evento 'beforeinstallprompt' para controle do prompt de instalação
 		window.addEventListener("beforeinstallprompt", (e) => {
 			e.preventDefault()
+			console.log("Evento 'beforeinstallprompt' capturado.")
 			setDeferredPrompt(e)
 		})
 
-		// Verificar manualmente se o PWA já está em modo standalone
+		// Verificar se o PWA já está em modo standalone manualmente
 		if (
 			window.matchMedia("(display-mode: standalone)").matches ||
 			window.navigator.standalone
 		) {
+			console.log("O PWA já está rodando no modo standalone.")
 			setIsInstalled(true)
+		} else {
+			console.log(
+				"O PWA não está instalado ou não está rodando no modo standalone."
+			)
 		}
 
 		setLoading(false) // Encerrar o carregamento quando o estado inicial for determinado
@@ -41,9 +50,12 @@ const Welcome = () => {
 	useEffect(() => {
 		if (isInstalled) {
 			// Mostrar loading por 3 segundos se a PWA estiver instalada
+			console.log(
+				"Mostrando tela de carregamento por 3 segundos após a instalação."
+			)
 			setTimeout(() => {
 				setLoading(false)
-			}, 3000)
+			}, 10000)
 		} else {
 			setLoading(false)
 		}
@@ -51,9 +63,11 @@ const Welcome = () => {
 
 	const handleButtonClick = () => {
 		if (isInstalled) {
-			// Se o PWA já está instalado, tente abrir o aplicativo
+			console.log("Abrindo o PWA já instalado.")
+			// Se o PWA já está instalado, redirecionar para a URL do PWA
 			window.location.href = "/"
 		} else if (deferredPrompt) {
+			console.log("Exibindo o prompt de instalação.")
 			// Se o PWA não está instalado, mostramos o prompt de instalação
 			deferredPrompt.prompt()
 			deferredPrompt.userChoice.then((choiceResult) => {

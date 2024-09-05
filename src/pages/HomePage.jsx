@@ -5,7 +5,7 @@ import ContentSection from "./ContentSection"
 import ListSection from "./ListSection"
 import SocialSection from "./SocialSection"
 import Footer from "./Footer"
-import "../utils/deferredPrompt"
+// import "../utils/deferredPrompt"
 
 const HomePage = () => {
 	return (

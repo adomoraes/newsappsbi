@@ -7,24 +7,24 @@ const Welcome = () => {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		// Verificar se a PWA está instalada
+		// Função para lidar com o evento de instalação do app
 		const handleAppInstalled = () => {
 			console.log("PWA foi instalado!")
 			setIsInstalled(true)
-			setDeferredPrompt(null) // Remover o prompt após a instalação
+			setDeferredPrompt(null)
 		}
 
-		// Adicionando o evento de 'appinstalled' para detectar a instalação
+		// Adicionando o evento para detectar quando o app é instalado
 		window.addEventListener("appinstalled", handleAppInstalled)
 
-		// Captura o evento 'beforeinstallprompt' para controle do prompt de instalação
+		// Capturando o evento de antes da instalação para controle
 		window.addEventListener("beforeinstallprompt", (e) => {
 			e.preventDefault()
 			console.log("Evento 'beforeinstallprompt' capturado.")
 			setDeferredPrompt(e)
 		})
 
-		// Verificar se o PWA já está em modo standalone manualmente
+		// Verificando se o PWA já está rodando no modo standalone
 		if (
 			window.matchMedia("(display-mode: standalone)").matches ||
 			window.navigator.standalone
@@ -37,38 +37,29 @@ const Welcome = () => {
 			)
 		}
 
-		setLoading(false) // Encerrar o carregamento quando o estado inicial for determinado
-
+		setLoading(false) // Encerra o loading após a verificação
 		return () => {
 			window.removeEventListener("appinstalled", handleAppInstalled)
-			window.removeEventListener("beforeinstallprompt", () =>
+			window.removeEventListener("beforeinstallprompt", () => {
 				setDeferredPrompt(null)
-			)
+			})
 		}
 	}, [])
 
+	// Função para simular o carregamento ao finalizar a instalação
 	useEffect(() => {
 		if (isInstalled) {
-			// Mostrar loading por 3 segundos se a PWA estiver instalada
 			console.log(
 				"Mostrando tela de carregamento por 3 segundos após a instalação."
 			)
 			setTimeout(() => {
 				setLoading(false)
-			}, 10000)
-		} else {
-			setLoading(false)
+			}, 3000)
 		}
 	}, [isInstalled])
 
 	const handleButtonClick = () => {
-		if (isInstalled) {
-			console.log("Abrindo o PWA já instalado.")
-			// Se o PWA já está instalado, redirecionar para a URL do PWA
-			window.location.href = "/"
-		} else if (deferredPrompt) {
-			console.log("Exibindo o prompt de instalação.")
-			// Se o PWA não está instalado, mostramos o prompt de instalação
+		if (deferredPrompt) {
 			deferredPrompt.prompt()
 			deferredPrompt.userChoice.then((choiceResult) => {
 				if (choiceResult.outcome === "accepted") {
@@ -93,10 +84,19 @@ const Welcome = () => {
 		)
 	}
 
+	// Component Loading: Exibir tela de carregamento enquanto aguarda
 	if (loading) {
-		return <div>Loading...</div>
+		return (
+			<div className='flex items-center justify-center h-screen'>
+				<div className='loading-spinner'>
+					{/* Adicionar uma animação ou spinner */}
+					<p>Instalando o aplicativo...</p>
+				</div>
+			</div>
+		)
 	}
 
+	// Se o app estiver instalado, redirecionar para a HomePage
 	if (isInstalled) {
 		return <HomePage />
 	} else {
@@ -109,7 +109,7 @@ const Welcome = () => {
 				/>
 				<h1 className='text-4xl font-bold'>Bem-vindo ao NewsAPP SBI</h1>
 				<h2 className='text-2xl mt-4'>
-					O essencial da infectologia na suas mãos
+					O essencial da infectologia nas suas mãos
 				</h2>
 				<p className='mt-2'>
 					Fique atualizado com as últimas notícias, eventos e informações
@@ -128,9 +128,7 @@ const Welcome = () => {
 						isIos() ? "hidden" : ""
 					}`}
 					onClick={handleButtonClick}>
-					{isInstalled
-						? "Clique aqui para abrir o aplicativo!"
-						: "Clique aqui para instalar!"}
+					{isInstalled ? "Acessar o APP" : "Clique aqui para instalar!"}
 				</button>
 			</div>
 		)

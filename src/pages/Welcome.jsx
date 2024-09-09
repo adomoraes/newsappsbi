@@ -57,7 +57,19 @@ const Welcome = () => {
 	}, [])
 
 	const handleButtonClick = () => {
-		if (deferredPrompt) {
+		if (isInstalled && !isStandalone) {
+			// Se o PWA estiver instalado, mas não estiver em modo standalone
+			alert(
+				"Abra o aplicativo a partir da tela inicial para o modo standalone."
+			)
+			return
+		}
+
+		if (isStandalone) {
+			// Redireciona ou recarrega a página se o app já estiver em modo standalone
+			window.location.reload()
+		} else if (deferredPrompt) {
+			// Mostra o prompt de instalação se disponível
 			deferredPrompt.prompt()
 			deferredPrompt.userChoice.then((choiceResult) => {
 				if (choiceResult.outcome === "accepted") {

@@ -3,9 +3,9 @@ import HomePage from "./HomePage"
 
 const Welcome = () => {
 	const [deferredPrompt, setDeferredPrompt] = useState(null)
-	const [isInstalled, setIsInstalled] = useState(false)
+	const [isInstalled, setIsInstalled] = useState(false) // PWA instalado
+	const [isStandalone, setIsStandalone] = useState(false) // PWA em modo standalone
 	const [loading, setLoading] = useState(true)
-	const [isStandalone, setIsStandalone] = useState(false)
 
 	// Verificação do sistema operacional
 	const isIos = () => {
@@ -13,11 +13,7 @@ const Welcome = () => {
 		return /iphone|ipad|ipod/.test(userAgent)
 	}
 
-	const isAndroid = () => {
-		const userAgent = window.navigator.userAgent.toLowerCase()
-		return /android/.test(userAgent)
-	}
-
+	// Função para verificar o modo standalone
 	const checkStandaloneMode = () => {
 		return (
 			window.matchMedia("(display-mode: standalone)").matches ||
@@ -26,23 +22,20 @@ const Welcome = () => {
 	}
 
 	useEffect(() => {
-		// Primeira verificação: se o app já está rodando no modo standalone
+		// Verifica se o app já está rodando no modo standalone
 		if (checkStandaloneMode()) {
-			console.log("O PWA já está rodando no modo standalone.")
-			setIsStandalone(true) // Atualiza o estado para indicar que está em modo standalone
-			setIsInstalled(true) // Indica que o app está instalado
-			setLoading(false) // Finaliza o loading
-			return
+			console.log("PWA está rodando em modo standalone.")
+			setIsStandalone(true) // App rodando em modo standalone
+			setIsInstalled(true) // App instalado
 		}
 
 		// Função para lidar com o evento de instalação do app
 		const handleAppInstalled = () => {
 			console.log("PWA foi instalado!")
-			setIsInstalled(true)
-			setDeferredPrompt(null)
+			setIsInstalled(true) // App agora está instalado
 		}
 
-		// Adiciona o evento para detectar a instalação do app
+		// Captura o evento 'appinstalled' para detectar quando o PWA é instalado
 		window.addEventListener("appinstalled", handleAppInstalled)
 
 		// Captura o evento 'beforeinstallprompt' para controle do prompt de instalação no Android
@@ -52,8 +45,7 @@ const Welcome = () => {
 			setDeferredPrompt(e)
 		})
 
-		// Finaliza o carregamento
-		setLoading(false)
+		setLoading(false) // Encerra o estado de carregamento
 
 		// Cleanup dos event listeners
 		return () => {
@@ -78,7 +70,7 @@ const Welcome = () => {
 		}
 	}
 
-	// Comportamento para iOS: instruir o usuário a instalar manualmente
+	// Instruções para iOS: instruir o usuário a instalar manualmente
 	const renderIosInstallInstructions = () => (
 		<p className='mt-2 text-center'>
 			Para instalar o aplicativo, clique no ícone de compartilhar no navegador e
@@ -86,12 +78,12 @@ const Welcome = () => {
 		</p>
 	)
 
-	// Componente de carregamento
+	// Exibe componente de carregamento enquanto o estado de verificação é concluído
 	if (loading) {
 		return (
 			<div className='flex items-center justify-center h-screen'>
 				<div className='loading-spinner'>
-					<p>Instalando o aplicativo...</p>
+					<p>Verificando o status do aplicativo...</p>
 				</div>
 			</div>
 		)
@@ -129,7 +121,7 @@ const Welcome = () => {
 					isIos() ? "hidden" : ""
 				}`}
 				onClick={handleButtonClick}>
-				{isStandalone ? "Acessar o APP" : "Clique aqui para instalar!"}
+				{isInstalled ? "Acessar o APP" : "Clique aqui para instalar!"}
 			</button>
 		</div>
 	)

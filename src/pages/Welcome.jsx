@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react"
 import HomePage from "./HomePage"
+import Loading from "../components/Loading" // Novo componente de Loading
 
 const Welcome = () => {
 	const [deferredPrompt, setDeferredPrompt] = useState(null)
 	const [isInstalled, setIsInstalled] = useState(false) // PWA instalado
 	const [isStandalone, setIsStandalone] = useState(false) // PWA em modo standalone
 	const [loading, setLoading] = useState(true)
+	const [installSuccess, setInstallSuccess] = useState(false) // Controle de sucesso na instalação
+	const [showAccessPrompt, setShowAccessPrompt] = useState(false) // Controle do prompt para acessar app
 
 	// Verificação do sistema operacional
 	const isIos = () => {
@@ -27,12 +30,18 @@ const Welcome = () => {
 			console.log("PWA está rodando em modo standalone.")
 			setIsStandalone(true) // App rodando em modo standalone
 			setIsInstalled(true) // App instalado
+			setLoading(false) // Encerra o loading
 		}
 
 		// Função para lidar com o evento de instalação do app
 		const handleAppInstalled = () => {
-			console.log("PWA foi instalado!")
-			setIsInstalled(true) // App agora está instalado
+			console.log("PWA foi instalado com sucesso!")
+			setInstallSuccess(true) // Exibe mensagem de sucesso na instalação
+			setTimeout(() => {
+				setShowAccessPrompt(true) // Exibe o prompt para acessar o app após instalação
+			}, 2000) // Mostra prompt após 2 segundos
+			setIsInstalled(true) // Marca como instalado
+			setLoading(false) // Encerra o loading
 		}
 
 		// Captura o evento 'appinstalled' para detectar quando o PWA é instalado
@@ -45,7 +54,7 @@ const Welcome = () => {
 			setDeferredPrompt(e)
 		})
 
-		setLoading(false) // Encerra o estado de carregamento
+		setLoading(false) // Encerra o estado de carregamento se nada estiver pendente
 
 		// Cleanup dos event listeners
 		return () => {
@@ -82,23 +91,23 @@ const Welcome = () => {
 		}
 	}
 
-	// Instruções para iOS: instruir o usuário a instalar manualmente
-	const renderIosInstallInstructions = () => (
-		<p className='mt-2 text-center'>
-			Para instalar o aplicativo, clique no ícone de compartilhar no navegador e
-			selecione "Adicionar à Tela de Início".
-		</p>
-	)
-
-	// Exibe componente de carregamento enquanto o estado de verificação é concluído
-	if (loading) {
+	// Componente de carregamento e sucesso na instalação
+	if (loading || installSuccess) {
 		return (
-			<div className='flex items-center justify-center h-screen'>
-				<div className='loading-spinner'>
-					<p>Verificando o status do aplicativo...</p>
-				</div>
-			</div>
+			<Loading
+				successMessage={installSuccess ? "App instalado com sucesso!" : ""}
+			/>
 		)
+	}
+
+	// Exibe prompt perguntando se o usuário deseja acessar o app em standalone
+	if (showAccessPrompt) {
+		const accessStandalone = window.confirm(
+			"Deseja acessar o app no modo standalone?"
+		)
+		if (accessStandalone) {
+			window.location.reload() // Recarrega a página em standalone
+		}
 	}
 
 	// Se o app estiver instalado e rodando em modo standalone, renderizar <HomePage>
@@ -125,7 +134,12 @@ const Welcome = () => {
 			</p>
 
 			{/* Instruções para iOS se o app não estiver instalado */}
-			{isIos() && !checkStandaloneMode() && renderIosInstallInstructions()}
+			{isIos() && !checkStandaloneMode() && (
+				<p className='mt-2 text-center'>
+					Para instalar o aplicativo, clique no ícone de compartilhar no
+					navegador e selecione "Adicionar à Tela de Início".
+				</p>
+			)}
 
 			{/* Botão de instalação ou abertura do app */}
 			<button

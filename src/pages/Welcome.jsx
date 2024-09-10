@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import HomePage from "./HomePage"
-import Loading from "../components/Loading" // Novo componente de Loading
+import Loading from "../components/Loading"
 
 const Welcome = () => {
 	const [deferredPrompt, setDeferredPrompt] = useState(null)

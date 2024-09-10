@@ -16,6 +16,11 @@ const Welcome = () => {
 		return /iphone|ipad|ipod/.test(userAgent)
 	}
 
+	const isAndroid = () => {
+		const userAgent = window.navigator.userAgent.toLowerCase()
+		return /android/.test(userAgent)
+	}
+
 	// Função para verificar o modo standalone
 	const checkStandaloneMode = () => {
 		return (
@@ -68,9 +73,15 @@ const Welcome = () => {
 	const handleButtonClick = () => {
 		if (isInstalled && !isStandalone) {
 			// Se o PWA estiver instalado, mas não estiver em modo standalone
-			alert(
-				"Abra o aplicativo a partir da tela inicial para o modo standalone."
-			)
+			if (isAndroid()) {
+				// Para Android, tentar abrir em modo standalone
+				window.location.href = `${window.location.origin}/?standalone=true` // Forçar modo standalone
+			} else {
+				// Para iOS, alertar o usuário para abrir da tela inicial
+				alert(
+					"Abra o aplicativo a partir da tela inicial para o modo standalone."
+				)
+			}
 			return
 		}
 

@@ -40,11 +40,13 @@ const Welcome = () => {
 
 		// Função para lidar com o evento de instalação do app
 		const handleAppInstalled = () => {
-			console.log("PWA foi instalado com sucesso!")
-			setInstallSuccess(true) // Exibe mensagem de sucesso na instalação
+			console.log(
+				"PWA foi instalado, aguardando 10 segundos para mostrar sucesso..."
+			)
 			setTimeout(() => {
+				setInstallSuccess(true) // Exibe mensagem de sucesso na instalação após 10 segundos
 				setShowAccessPrompt(true) // Exibe o prompt para acessar o app após instalação
-			}, 2000) // Mostra prompt após 2 segundos
+			}, 10000) // Espera 10 segundos antes de definir installSuccess como true
 			setIsInstalled(true) // Marca como instalado
 			setLoading(false) // Encerra o loading
 		}
@@ -153,13 +155,17 @@ const Welcome = () => {
 			)}
 
 			{/* Botão de instalação ou abertura do app */}
-			<button
-				className={`mt-6 px-4 py-2 bg-[#00BCE4] text-[#0C033D] rounded hover:bg-[#0C033D] hover:text-[#00BCE4] transition duration-300 ${
-					isIos() ? "hidden" : ""
-				}`}
-				onClick={handleButtonClick}>
-				{isInstalled ? "Acessar o APP" : "Clique aqui para instalar!"}
-			</button>
+			{isInstalled ? (
+				"Instalando APP ..."
+			) : (
+				<button
+					className={`mt-6 px-4 py-2 bg-[#00BCE4] text-[#0C033D] rounded hover:bg-[#0C033D] hover:text-[#00BCE4] transition duration-300 ${
+						isIos() ? "hidden" : ""
+					}`}
+					onClick={handleButtonClick}>
+					{isInstalled ? "Acessar o APP" : "Clique aqui para instalar!"}
+				</button>
+			)}
 		</div>
 	)
 }

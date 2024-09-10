@@ -1,6 +1,10 @@
 import React from "react"
 
 const Loading = ({ successMessage }) => {
+	const handleReload = () => {
+		window.location.reload() // Ação de recarregar a página standalone
+	}
+
 	return (
 		<div className='flex flex-col items-center justify-center h-screen bg-[#081F87] text-white text-center p-6'>
 			<img

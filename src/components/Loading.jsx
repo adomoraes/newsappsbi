@@ -2,7 +2,7 @@ import React from "react"
 
 const Loading = ({ successMessage }) => {
 	const handleReload = () => {
-		window.location.reload() // Ação de recarregar a página
+		window.location.reload() // Ação de recarregar a página standalone
 	}
 
 	return (

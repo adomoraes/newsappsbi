@@ -136,35 +136,46 @@ const Welcome = () => {
 				src='./assets/images/logo.png'
 				alt='Logo SBI'
 			/>
-			<h1 className='text-4xl font-bold'>Bem-vindo ao NewsAPP SBI</h1>
-			<h2 className='text-2xl mt-4'>
-				O essencial da infectologia nas suas mãos
-			</h2>
-			<p className='mt-2'>
-				Fique atualizado com as últimas notícias, eventos e informações
-				importantes sobre infectologia diretamente da Sociedade Brasileira de
-				Infectologia.
-			</p>
-
-			{/* Instruções para iOS se o app não estiver instalado */}
-			{isIos() && !checkStandaloneMode() && (
-				<p className='mt-2 text-center'>
-					Para instalar o aplicativo, clique no ícone de compartilhar no
-					navegador e selecione "Adicionar à Tela de Início".
-				</p>
-			)}
 
 			{/* Botão de instalação ou abertura do app */}
 			{isInstalled ? (
-				"Instalando APP ..."
+				<>
+					<h1 className='text-4xl font-bold mb-5'>Download iniciado!</h1>
+
+					<div
+						className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+						role='status'>
+						<span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+							Instalando APP...
+						</span>
+					</div>
+				</>
 			) : (
-				<button
-					className={`mt-6 px-4 py-2 bg-[#00BCE4] text-[#0C033D] rounded hover:bg-[#0C033D] hover:text-[#00BCE4] transition duration-300 ${
-						isIos() ? "hidden" : ""
-					}`}
-					onClick={handleButtonClick}>
-					{isInstalled ? "Acessar o APP" : "Clique aqui para instalar!"}
-				</button>
+				<>
+					<h1 className='text-4xl font-bold'>Bem-vindo ao NewsAPP SBI</h1>
+					<h2 className='text-2xl mt-4'>
+						O essencial da infectologia nas suas mãos
+					</h2>
+					<p className='mt-2'>
+						Fique atualizado com as últimas notícias, eventos e informações
+						importantes sobre infectologia diretamente da Sociedade Brasileira
+						de Infectologia.
+					</p>
+					{/* Instruções para iOS se o app não estiver instalado */}
+					{isIos() && !checkStandaloneMode() && (
+						<p className='mt-2 text-center'>
+							Para instalar o aplicativo, clique no ícone de compartilhar no
+							navegador e selecione "Adicionar à Tela de Início".
+						</p>
+					)}
+					<button
+						className={`mt-6 px-4 py-2 bg-[#00BCE4] text-[#0C033D] rounded hover:bg-[#0C033D] hover:text-[#00BCE4] transition duration-300 ${
+							isIos() ? "hidden" : ""
+						}`}
+						onClick={handleButtonClick}>
+						{isInstalled ? "Acessar o APP" : "Clique aqui para instalar!"}
+					</button>
+				</>
 			)}
 		</div>
 	)
